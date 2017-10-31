@@ -25,28 +25,6 @@ magenta="\[$(tput setaf 5)\]"
 cyan="\[$(tput setaf 6)\]"
 white="\[$(tput setaf 7)\]"
 
-git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)\ /';
-}
-
-# print current git repo url
-function urlgit () {
-    git config --get remote.origin.url
-}
-
-git_repo_name() {
-    dir=$(basename $(urlgit) '.git')
-    if [ "$dir" != ".git" ]; then
-        echo "$dir"
-    fi
-}
-
-git_repo_branch() {
-    if [ ! -z "$(git_repo_name)" ]; then
-        echo "$(git_repo_name)$(git_branch)"
-    fi
-}
-
 # custom prompt
 export PS1="\n${blue}\w ${cyan}\$(git_repo_branch)\n${green}➜${white} "
  
@@ -75,6 +53,7 @@ alias .6='cd ../../../../../../'            # Go back 6 directory levels
 # git aliases
 alias urlgit='git config --get remote.origin.url'   # print current git repo url
 alias lsgit='git ls-tree -r master --name-only'     # list all tracked files by git from master branch
+alias sgit='git status'                          # show git status
 
 trash () { command mv "$@" ~/.Trash ; }  
 
@@ -89,6 +68,29 @@ function lazygit() {
     git add .
     git commit -a -m "$1"
     git push
+}
+
+# get git branch put in brackets
+git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)\ /';
+}
+
+# print git repo url of the current directory
+function urlgit () {
+    git config --get remote.origin.url
+}
+
+git_repo_name() {
+    dir=$(basename $(urlgit) '.git')
+    if [ "$dir" != ".git" ]; then
+        echo "$dir"
+    fi
+}
+
+git_repo_branch() {
+    if [ ! -z "$(git_repo_name)" ]; then
+        echo "$(git_repo_name)$(git_branch)"
+    fi
 }
 
 #   -------------------------------
