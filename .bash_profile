@@ -58,11 +58,13 @@ alias .3='cd ../../../'                     # Go back 3 directory levels
 alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
+alias e='edit'                              # edit file using default editor
 
 # git aliases
 alias urlgit='git config --get remote.origin.url'   # print current git repo url
 alias lsgit='git ls-tree -r master --name-only'     # list all tracked files by git from master branch
-alias sgit='git status'                          # show git status
+alias sgit='git status'                             # show git status
+alias acp='lazygit'                                 # add, commit, push
 
 trash () { command mv "$@" ~/.Trash ; }  
 
