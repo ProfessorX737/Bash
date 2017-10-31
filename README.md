@@ -1,7 +1,7 @@
 # Bash
 
-Adds useful aliases and shortcuts
-Uses the dracula terminal theme for maxosx
+Adds useful aliases and shortcuts.
+Uses the dracula terminal theme for MacOSx.
 
 Steps
 1. Clone repos into your ~ directory
