@@ -80,6 +80,11 @@ function lazygit() {
     git push
 }
 
+# list all tracked files by git from master branch
+function lsgit() {
+    git ls-tree -r master --name-only
+}
+
 #   -------------------------------
 #   3. FILE AND FOLDER MANAGEMENT
 #   -------------------------------
