@@ -1,5 +1,5 @@
-#ignore everything
-*
+#ignore all files recursively
+**
 
 #except these files
 !.gitignore
