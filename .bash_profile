@@ -25,9 +25,18 @@ magenta="\[$(tput setaf 5)\]"
 cyan="\[$(tput setaf 6)\]"
 white="\[$(tput setaf 7)\]"
 
+printl () {
+    N=$(tput cols)
+    for i in `seq 1 $N`
+    do
+        echo -n "_"
+    done
+    echo ""
+}
+
 # custom prompt
-export PS1="${green}________________________________________________________________________________\n${magenta}\w ${cyan}\$(git_repo_branch)\n${green}➜${white} "
- --
+export PS1="${green}$(printl)${magenta}\w ${cyan}\$(git_repo_branch)\n${green}➜${white} "
+
 # Clear attributes
 clear_attributes="\[$(tput sgr0)\]"
 
