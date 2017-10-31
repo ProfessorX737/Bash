@@ -29,28 +29,41 @@ git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)\ /';
 }
 
+# print current git repo url
+function urlgit () {
+    git config --get remote.origin.url
+}
+
+git_repo_name() {
+    dir=$(basename $(urlgit) '.git')
+    if [ "$dir" != ".git" ]; then
+        echo "$dir"
+    fi
+}
+
+git_repo_branch() {
+    if [ ! -z "$(git_repo_name)" ]; then
+        echo "$(git_repo_name)$(git_branch)"
+    fi
+}
+
 # custom prompt
-export PS1="\n${blue}\w ${cyan}\$(git_branch)\n${green}➜${white} "
-# ${white}________________________________________________________________________________\n| 
+export PS1="\n${blue}\w ${cyan}\$(git_repo_branch)\n${green}➜${white} "
+ 
 # Clear attributes
 clear_attributes="\[$(tput sgr0)\]"
 
-# text color
- export CLICOLOR=1
-
-# Setting PATH for Python 3.5
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH
+export CLICOLOR=1
 
 #   -----------------------------
 #   2. MAKE TERMINAL BETTER
 #   -----------------------------
 
+# common commands
 alias clc='clear'                           # Clear terminal
 alias c='clear'                             # Clear terminal
 alias ~='cd ~'                              # Go Home
-alias h='cd ~'                           # Go Home
+alias h='cd ~'                              # Go Home
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
@@ -58,6 +71,10 @@ alias .3='cd ../../../'                     # Go back 3 directory levels
 alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
+
+# git aliases
+alias urlgit='git config --get remote.origin.url'   # print current git repo url
+alias lsgit='git ls-tree -r master --name-only'     # list all tracked files by git from master branch
 
 trash () { command mv "$@" ~/.Trash ; }  
 
@@ -67,22 +84,11 @@ cdl () {
     ls
 }
 
-# cd into directory and open file
-cdo () {
-    cd "$1"
-    open "$1"
-}
-
 # make git easier
 function lazygit() {
     git add .
     git commit -a -m "$1"
     git push
-}
-
-# list all tracked files by git from master branch
-function lsgit() {
-    git ls-tree -r master --name-only
 }
 
 #   -------------------------------
@@ -91,15 +97,16 @@ function lsgit() {
 
 alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
 
-ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
-spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
-
 #   ---------------------------
 #   4. SEARCHING
 #   ---------------------------
 
-bind '"\e[A":history-search-backward'
-bind '"\e[B": history-search-forward'
+# search for previous commands based on initial command fragment given
+bind '"\e[A":history-search-backward'       # <up-arrow>
+bind '"\e[B": history-search-forward'       # <down-arrow>
+
+ff () { /usr/bin/find . -name "$@" ; }      # ff:       Find file under the current directory
+spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 
 #   ---------------------------
 #   6. NETWORKING
