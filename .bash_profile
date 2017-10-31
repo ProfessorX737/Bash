@@ -26,8 +26,8 @@ cyan="\[$(tput setaf 6)\]"
 white="\[$(tput setaf 7)\]"
 
 # custom prompt
-export PS1="\n${blue}\w ${cyan}\$(git_repo_branch)\n${green}➜${white} "
- 
+export PS1="${green}________________________________________________________________________________\n${magenta}\w ${cyan}\$(git_repo_branch)\n${green}➜${white} "
+ --
 # Clear attributes
 clear_attributes="\[$(tput sgr0)\]"
 
@@ -97,7 +97,7 @@ git_repo_branch() {
 #   3. FILE AND FOLDER MANAGEMENT
 #   -------------------------------
 
-alias numFiles='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
+alias numf='echo $(ls -1 | wc -l)'      # numFiles:     Count of non-hidden files in current dir
 
 #   ---------------------------
 #   4. SEARCHING
