@@ -1,0 +1,32 @@
+[core]
+	excludesfile = /Users/ProfessorX/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[user]
+	name = Xavier Poon
+	email = 
+[push]
+	default = simple
+	
+[color]
+  diff = auto
+  status = auto
+[color "branch"]
+  current = cyan
+  local = green
+  remote = red
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = red
+  new = green
+[color "status"]
+  added = cyan
+  branch = cyan
+  changed = magenta
+  deleted = red
+  untracked = yellow
