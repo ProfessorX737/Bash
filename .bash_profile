@@ -35,7 +35,8 @@ printl () {
 }
 
 # custom prompt
-export PS1="${green}$(printl)${magenta}\w${cyan}\$(git_name_filter)\n${green}➜${white} "
+export 
+PS1="${green}$(printl)${magenta}\w${cyan}\$(git_name_filter)\n${green}➜ ${white} "
 
 # Clear attributes
 clear_attributes="\[$(tput sgr0)\]"
@@ -46,11 +47,18 @@ export CLICOLOR=1
 #   2. MAKE TERMINAL BETTER
 #   -----------------------------
 
+user () {
+   echo $(whoami) | sed 's/ /\\ /g'
+} 
+
 # common commands
 alias clc='clear'                           # Clear terminal
 alias c='clear'                             # Clear terminal
 alias ~='cd ~'                              # Go Home
 alias h='cd ~'                              # Go Home
+alias rh='cd /'				    # Go to root home
+alias rc="cd C:/Users/$(user)"              # Go to C drive home
+alias rd="cd D:/Users/$(user)"	   	    # Go to D drive home
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
