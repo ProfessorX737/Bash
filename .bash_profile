@@ -35,8 +35,7 @@ printl () {
 }
 
 # custom prompt
-export 
-PS1="${green}$(printl)${magenta}\w${cyan}\$(git_name_filter)\n${green}➜ ${white} "
+export PS1="${green}$(printl)${magenta}\w${cyan}\$(git_name_filter)\n${green}➜ ${white} "
 
 # Clear attributes
 clear_attributes="\[$(tput sgr0)\]"
