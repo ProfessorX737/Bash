@@ -26,8 +26,8 @@ cyan="\[$(tput setaf 6)\]"
 white="\[$(tput setaf 7)\]"
 
 printl () {
-    N=$(tput cols)
-    for i in `seq 1 $N`
+    cols=$(tput cols)
+    for i in `seq 1 $cols`
     do
         echo -n "_"
     done
@@ -35,7 +35,7 @@ printl () {
 }
 
 # custom prompt
-export PS1="${green}$(printl)${magenta}\w ${cyan}\$(git_repo_branch)\n${green}➜${white} "
+export PS1="${green}$(printl)${magenta}\w${cyan}\$(git_name_filter)\n${green}➜${white} "
 
 # Clear attributes
 clear_attributes="\[$(tput sgr0)\]"
@@ -101,6 +101,14 @@ git_repo_name() {
 git_repo_branch() {
     if [ ! -z "$(git_repo_name)" ]; then
         echo "$(git_repo_name)$(git_branch)"
+    fi
+}
+
+git_name_filter () {
+    if [[ ( "$(basename $(pwd))" != "$(git_repo_name)" ) || ( "$(basename $(pwd))" = "$(basename $HOME)" ) ]]; then
+        echo " $(git_repo_branch)"
+    else 
+        echo $(git_branch)
     fi
 }
 
