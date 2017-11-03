@@ -35,7 +35,7 @@ printl () {
 }
 
 # custom prompt
-export PS1="${green}$(printl)${magenta}\w${cyan}\$(git_name_filter)\n${green}➜ ${white} "
+export PS1="${green}$(printl)${magenta}\w ${cyan}\$(git_name_filter)\n${green}➜ ${white} "
 
 # Clear attributes
 clear_attributes="\[$(tput sgr0)\]"
@@ -114,7 +114,7 @@ git_repo_branch() {
 
 git_name_filter () {
     if [[ ( "$(basename "$(pwd)")" != "$(git_repo_name)" ) || ( "$(basename "$(pwd)")" = "$(basename $HOME)" ) ]]; then
-        echo " $(git_repo_branch)"
+        echo $(git_repo_branch)
     else 
         echo $(git_branch)
     fi
