@@ -46,6 +46,7 @@ export CLICOLOR=1
 #   2. MAKE TERMINAL BETTER
 #   -----------------------------
 
+# get the name of the user. Ensure that if there are spaces, appropriate syntax is in place
 user () {
    echo $(whoami) | sed 's/ /\\ /g'
 } 
@@ -88,7 +89,7 @@ function lazygit() {
     git push
 }
 
-# get git branch put in brackets
+# get git branch and put in brackets
 git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)\ /';
 }
@@ -112,7 +113,7 @@ git_repo_branch() {
 }
 
 git_name_filter () {
-    if [[ ( "$(basename $(pwd))" != "$(git_repo_name)" ) || ( "$(basename $(pwd))" = "$(basename $HOME)" ) ]]; then
+    if [[ ( "$(basename "$(pwd)")" != "$(git_repo_name)" ) || ( "$(basename "$(pwd)")" = "$(basename $HOME)" ) ]]; then
         echo " $(git_repo_branch)"
     else 
         echo $(git_branch)
