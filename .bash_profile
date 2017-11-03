@@ -108,7 +108,7 @@ git_repo_name() {
 
 git_repo_branch() {
     if [ ! -z "$(git_repo_name)" ]; then
-        echo "$(git_repo_name)$(git_branch)"
+        echo "$(git_repo_name) $(git_branch)"
     fi
 }
 
