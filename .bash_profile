@@ -42,6 +42,11 @@ clear_attributes="\[$(tput sgr0)\]"
 
 export CLICOLOR=1
 
+if [ ! -z "$(command -v startxwin)" ]; then
+	startxwin >/dev/null 2>&1 &
+	export DISPLAY=:0.0
+fi
+
 #   -----------------------------
 #   2. MAKE TERMINAL BETTER
 #   -----------------------------
