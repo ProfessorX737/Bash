@@ -158,3 +158,4 @@ spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 #   ---------------------------------------
 #   9. REMINDERS & NOTES
 #   ---------------------------------------
+:x
