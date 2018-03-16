@@ -72,7 +72,11 @@ alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 alias e='edit'                              # edit file using default editor
+<<<<<<< HEAD
 alias start='cygstart'		            # edit or open application or file	
+=======
+alias vi='vim'				    # make vi use vim
+>>>>>>> b62cf18a53c4a089bc49add9126c70cbaaefcdef
 
 # git aliases
 alias urlgit='git config --get remote.origin.url'   # print current git repo url
