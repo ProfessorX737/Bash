@@ -72,6 +72,7 @@ alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 alias e='edit'                              # edit file using default editor
+alias start='cygstart'		            # edit or open application or file	
 
 # git aliases
 alias urlgit='git config --get remote.origin.url'   # print current git repo url
@@ -152,4 +153,4 @@ spotlight () { mdfind "kMDItemDisplayName == '$@'wc"; }
 
 #   ---------------------------------------
 #   9. REMINDERS & NOTES
-#   ---------------------------------------
+#   ---------------------------------------

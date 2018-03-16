@@ -30,3 +30,7 @@
   changed = magenta
   deleted = red
   untracked = yellow
+[credential]
+	helper = store
+[gui]
+	recentrepo = D:/Users/Xavier Poon/Desktop/Uni/eighteenOne/2511_OODesignAndProgramming/1_week/Employee/src
