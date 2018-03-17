@@ -61,9 +61,9 @@ alias clc='clear'                           # Clear terminal
 alias c='clear'                             # Clear terminal
 alias ~='cd ~'                              # Go Home
 alias h='cd ~'                              # Go Home
-alias rh='cd /'				    # Go to root home
+alias rh='cd /'				    			# Go to root home
 alias rc="cd C:/Users/$(user)"              # Go to C drive home
-alias rd="cd D:/Users/$(user)"	   	    # Go to D drive home
+alias rd="cd D:/Users/$(user)"	   	    	# Go to D drive home
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
@@ -72,11 +72,8 @@ alias .4='cd ../../../../'                  # Go back 4 directory levels
 alias .5='cd ../../../../../'               # Go back 5 directory levels
 alias .6='cd ../../../../../../'            # Go back 6 directory levels
 alias e='edit'                              # edit file using default editor
-<<<<<<< HEAD
-alias start='cygstart'		            # edit or open application or file	
-=======
-alias vi='vim'				    # make vi use vim
->>>>>>> b62cf18a53c4a089bc49add9126c70cbaaefcdef
+alias start='cygstart'		            	# edit or open application or file	
+alias vi='vim'				    			# make vi use vim
 
 # git aliases
 alias urlgit='git config --get remote.origin.url'   # print current git repo url
